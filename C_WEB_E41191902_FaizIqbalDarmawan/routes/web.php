@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\Frontend\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::resource('user', ManagementUserController::class);
+//Route::get('/', [ManagementUserController::class, 'index']);
+
+//Route::get("/home", function(){
+ //   return view("home");
+//});
+
+Route::group(['namespace' => ''], function(){
+    Route::resource('home', HomeController::class);
 });
